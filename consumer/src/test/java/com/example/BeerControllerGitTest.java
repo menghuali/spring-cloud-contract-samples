@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 /**
  * @author Marcin Grzejszczak
  */
@@ -30,12 +31,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //@AutoConfigureStubRunner(stubsMode = StubRunnerProperties.StubsMode.LOCAL, ids = "com.example:beer-api-producer:+:stubs:8090")
 @AutoConfigureStubRunner(stubsMode = StubRunnerProperties.StubsMode.REMOTE,
 		repositoryRoot = "git://${ROOT}/target/contract_git/",
-		ids = { "com.example:beer-api-producer-git:0.0.1-SNAPSHOT"})
+		ids = { "com.example:beer-api-producer-git:0.0.1-SNAPSHOT"}) // TODO AVION-301: Load stubs (in DSL) from a Git repo
 
 @DirtiesContext
 //@org.junit.jupiter.api.Disabled
 @DisabledIfEnvironmentVariable(named = "SKIP_COMPATIBILITY_TESTS", matches = "true")
 public class BeerControllerGitTest extends AbstractTest {
+	// TODO AVION-301: Test consumer with contract
 
 	@Autowired MockMvc mockMvc;
 	@Autowired BeerController beerController;

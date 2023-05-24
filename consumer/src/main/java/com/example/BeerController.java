@@ -44,7 +44,7 @@ class BeerController {
 						.post(URI.create("http://localhost:" + this.port + "/check"))
 						.contentType(MediaType.APPLICATION_JSON)
 						.body(person),
-				Response.class);
+				Response.class); // TODO AVION-301: Consumer code (REST API) calls producer
 		switch (response.getBody().status) {
 		case OK:
 			return "THERE YOU GO";

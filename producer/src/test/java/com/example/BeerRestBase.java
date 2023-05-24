@@ -9,6 +9,7 @@ import io.restassured.module.mockmvc.config.RestAssuredMockMvcConfig;
 
 import org.junit.jupiter.api.BeforeEach;
 
+// TODO AVION-301: Base CDC test class
 public abstract class BeerRestBase {
 	ProducerController producerController = new ProducerController(oldEnough());
 	StatsController statsController = new StatsController(statsService());
@@ -18,7 +19,7 @@ public abstract class BeerRestBase {
 		// https://github.com/spring-cloud/spring-cloud-contract/issues/1428
 		EncoderConfig encoderConfig = new EncoderConfig().appendDefaultContentCharsetToContentTypeIfUndefined(false);
 		RestAssuredMockMvc.config = new RestAssuredMockMvcConfig().encoderConfig(encoderConfig);
-		RestAssuredMockMvc.standaloneSetup(this.producerController, this.statsController);
+		RestAssuredMockMvc.standaloneSetup(this.producerController, this.statsController); // Wire up controller to be tested
 	}
 
 	private PersonCheckingService oldEnough() {
